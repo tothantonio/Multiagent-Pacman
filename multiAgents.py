@@ -143,12 +143,13 @@ class MinimaxAgent(MultiAgentSearchAgent):
         if gameState.isWin() or gameState.isLose():
             return self.evaluationFunction(gameState)
 
+        # pacman's turn and maximum depth reached
         if agentIdx == 0 and depth == self.depth:
             return self.evaluationFunction(gameState)
 
-        if agentIdx == 0:
+        if agentIdx == 0: # pacman
             return self.max_value(gameState, 0, depth)
-        else:
+        else: # ghost
             return self.min_value(gameState, agentIdx, depth)
 
     def max_value(self, gameState, agentIdx, depth):
